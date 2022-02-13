@@ -31,7 +31,7 @@ export const initialData: SeedData = {
             ],
             inStock: 7,
             price: 75,
-            sizes: ['XS','S','M','L','XL','XL','XXL'],
+            sizes: ['XS','S','M','L','XL','XXL'],
             slug: "mens_chill_crew_neck_sweatshirt",
             type: 'shirts',
             tags: ['sweatshirt'],
