@@ -1,7 +1,12 @@
+import { useContext } from 'react';
+import { useRouter } from 'next/router';
 import { Box, Button, FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography } from "@mui/material";
+import Cookies from 'js-cookie';
 import { useForm } from "react-hook-form";
+
 import { ShopLayout } from '../../components/layouts';
 import { countries } from "../../utils";
+import { CartContext } from '../../context';
 
 
 type FormData = {
@@ -16,23 +21,33 @@ type FormData = {
 }
 
 
+const getAddressFromCookies = ():FormData => {
+    return {
+        firstName : Cookies.get('firstName') || '',
+        lastName  : Cookies.get('lastName') || '',
+        address   : Cookies.get('address') || '',
+        address2  : Cookies.get('address2') || '',
+        zip       : Cookies.get('zip') || '',
+        city      : Cookies.get('city') || '',
+        country   : Cookies.get('country') || '',
+        phone     : Cookies.get('phone') || '',
+    }
+}
+
+
+
 const AddressPage = () => {
 
+    const router = useRouter();
+    const { updateAddress} = useContext( CartContext );
+
     const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
-       defaultValues: {
-            firstName: '',
-            lastName: '',
-            address: '',
-            address2: '',
-            zip: '',
-            city: countries[0].code,
-            country: '',
-            phone: '',
-       } 
+       defaultValues: getAddressFromCookies() 
     });
 
     const onSubmitAddress = ( data: FormData ) => {
-        console.log(data);
+        updateAddress( data );
+        router.push('/checkout/summary');
     }
 
   return (
@@ -117,9 +132,11 @@ const AddressPage = () => {
                 
                 <Grid item xs={12} sm={ 6 }>
                     <FormControl fullWidth>
-                        <Select
+                        <TextField
+                            select
                             variant="filled"
                             label="País"
+                            defaultValue={ Cookies.get('country') || countries[0].code }
                             { ...register('country', {
                                 required: 'Este campo es requerido'
                             })}
@@ -134,7 +151,7 @@ const AddressPage = () => {
                                     >{ country.name }</MenuItem>
                                 ))
                             }
-                        </Select>
+                        </TextField>
                     </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={ 6 }>
