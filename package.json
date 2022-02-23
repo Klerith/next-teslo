@@ -13,6 +13,7 @@
     "@mui/icons-material": "^5.4.1",
     "@mui/material": "^5.4.1",
     "@mui/x-data-grid": "^5.5.1",
+    "@paypal/react-paypal-js": "^7.6.0",
     "@types/bcryptjs": "^2.4.2",
     "axios": "^0.26.0",
     "bcryptjs": "^2.4.3",
