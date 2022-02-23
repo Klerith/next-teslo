@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { FC, useContext, useState } from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -7,7 +7,11 @@ import { ClearOutlined, SearchOutlined, ShoppingCartOutlined } from '@mui/icons-
 
 import { CartContext, UiContext } from '../../context';
 
-export const Navbar = () => {
+interface Props {
+    adminMode?: boolean;
+}
+
+export const Navbar:FC<Props> = ({ adminMode = false }) => {
 
     const { asPath, push } = useRouter();
     const { toggleSideMenu } = useContext( UiContext );
