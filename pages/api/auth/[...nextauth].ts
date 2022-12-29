@@ -1,4 +1,4 @@
-import NextAuth from 'next-auth';
+ import NextAuth from 'next-auth';
 import GithubProvider from 'next-auth/providers/github';
 import Credentials from 'next-auth/providers/credentials';
 
