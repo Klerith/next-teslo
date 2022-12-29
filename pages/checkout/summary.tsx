@@ -46,7 +46,7 @@ const SummaryPage = () => {
 
                         <Box display='flex' justifyContent='space-between'>
                             <Typography variant='subtitle1'>Dirección de entrega</Typography>
-                            <NextLink href='/checkout/address' passHref>
+                            <NextLink href='/checkout/address' passHref legacyBehavior>
                                 <Link underline='always'>
                                     Editar
                                 </Link>
@@ -64,7 +64,7 @@ const SummaryPage = () => {
                         <Divider sx={{ my:1 }} />
 
                         <Box display='flex' justifyContent='end'>
-                            <NextLink href='/cart' passHref>
+                            <NextLink href='/cart' passHref legacyBehavior>
                                 <Link underline='always'>
                                     Editar
                                 </Link>

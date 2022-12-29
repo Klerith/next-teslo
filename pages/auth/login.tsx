@@ -113,10 +113,13 @@ const LoginPage = () => {
                             </Button>
                         </Grid>
 
+
                         <Grid item xs={12} display='flex' justifyContent='end'>
                             <NextLink 
                                 href={ router.query.p ? `/auth/register?p=${ router.query.p }`: '/auth/register' } 
-                                passHref>
+                                legacyBehavior
+                                passHref
+                            >
                                 <Link underline='always'>
                                     ¿No tienes cuenta?
                                 </Link>
@@ -124,7 +127,7 @@ const LoginPage = () => {
                         </Grid>
 
                             
-                        <Grid item xs={12} display='flex' flexDirection='column' justifyContent='end'>
+                        {/* <Grid item xs={12} display='flex' flexDirection='column' justifyContent='end'>
                             <Divider sx={{ width: '100%', mb: 2 }} />
                             {
                                 Object.values( providers ).map(( provider: any ) => {
@@ -147,7 +150,7 @@ const LoginPage = () => {
                                 })
                             }
 
-                        </Grid>
+                        </Grid> */}
 
                     </Grid>
                 </Box>
